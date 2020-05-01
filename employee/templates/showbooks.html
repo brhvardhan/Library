@@ -1,0 +1,56 @@
+{% extends 'header_emp.html' %}
+{% block title_block %}
+Existing Books
+{% endblock %}
+
+{% block body_block %}
+
+{{message}}<br>
+
+Below are the stock of books present.
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            {% for field in fields %}
+            <th>
+                {{ field.name | title }}
+            </th>
+            {% endfor %}
+            <th>
+                Delete
+            </th>
+            <th>
+                Edit
+            </th>
+    </thead>
+    </tr>
+    <tbody>
+        {% for book in books_all %}
+        <tr>
+            <td>
+                {{ book.id | title }}
+            </td>
+            <td>
+                {{ book.Name | title }}
+            </td>
+            <td>
+                {{ book.Author | title }}
+            </td>
+            <td>
+                {{ book.Total_quantity | title }}
+            </td>
+            <td>
+                {{ book.Stock_quantity | title }}
+            </td>
+            <td>
+                <a href="{% url 'deleteBook' book.id %}"><button class='btn btn-danger'>Delete</button></a>
+            </td>
+            <td>
+                <a href="{% url 'editbookview' book.id %}"><button class='btn btn-warning'>Edit</button></a>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

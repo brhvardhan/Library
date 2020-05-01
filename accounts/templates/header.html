@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        {% block title_block %}
+        Account Page
+        {% endblock %}
+    </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/emp">Library Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#account_header"
+            aria-controls="account_header" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="account_header">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'usersloginview' %}">User Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'emploginview' %}">Employee Login</a>
+                </li>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        {% block body_block %}
+        Header body account
+        {% endblock %}
+    </div>
+</body>
+
+</html>

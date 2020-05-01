@@ -1,0 +1,30 @@
+{% extends 'header_emp.html' %}
+
+{% block title %}
+Add Book
+{% endblock %}
+
+{% block body_block %}
+<br>
+{% if message %}
+{{ message }} <br>
+{% endif %}
+Fill the below form to add new books:
+<form  method="POST">
+    {% csrf_token %}
+    {% for field in form1 %}
+    <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Add Book</button>
+</form>
+
+{% endblock %}

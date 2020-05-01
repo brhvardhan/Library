@@ -1,0 +1,35 @@
+{% extends 'header_emp.html' %}
+
+{% block title_block %}
+Edit Book
+{% endblock %}
+
+{% block body_block %}
+{% if book %}
+Fill the below form to add new books:
+<form method="POST">
+    {% csrf_token %}
+    <div class='form-group row'>
+        <label for='Name' class="col-sm-2">Name:</label>
+        <input type="text" class="form-control col-sm-10" value="{{book.Name}}" id='Name' name="Name"/>
+    </div>
+    <div class='form-group row'>
+        <label for='author' class="col-sm-2">Author:</label>
+        <input type="text" class="form-control col-sm-10" value="{{book.Author}}" id='author' name='author'/>
+    </div>
+    <div class='form-group row'>
+        <label for='tquantity' class="col-sm-2">Total Quantity:</label>
+        <input type="number" class="form-control col-sm-10" value="{{book.Total_quantity}}" id='tquantity' name='tquantity'/>
+    </div>
+    <div class='form-group row'>
+        <label for='squantity' class="col-sm-2">Stock Quantity:</label>
+        <input type="number" class="form-control col-sm-10" value="{{book.Stock_quantity}}" id='squantity' name='squantity'/>
+    </div>
+    
+        <button type="submit" class="btn btn-primary ml-10">Edit Book</button>
+</form>
+{% else %}
+{{ message }}
+{% endif %}
+
+{% endblock %}
