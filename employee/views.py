@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import AddBookForm
 from .models import Books
 # Create your views here.
+from accounts.models import  User
 
 def Index(request):
     if request.user.is_authenticated:
@@ -81,3 +82,7 @@ def EditBookView(request,id=None):
         message = 'Successfully Updated '+book.Name
         print(message)
         return redirect('/emp/showbooks?{}'.format('message='+message))
+
+def ExistingUserView(request):
+    users = User.objects.filter(is_staff=0)
+    return render(request,'existing_users.html',context={'users':users})

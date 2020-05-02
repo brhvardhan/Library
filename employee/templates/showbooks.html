@@ -4,9 +4,10 @@ Existing Books
 {% endblock %}
 
 {% block body_block %}
-
-{{message}}<br>
-
+{% if message %}
+{{message}}
+{%endif%}
+<br>
 Below are the stock of books present.
 <table class="table table-bordered">
     <thead>

@@ -1,0 +1,32 @@
+{% extends 'header_emp.html' %}
+{% block body_block %}
+
+<br>
+Below are the existing users of the Library:
+<table class="table">
+    <tr>
+        <th>
+            id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>Books</th>
+        <th>
+            Delete
+        </th>
+        <th>
+            Edit
+        </th>
+    </tr>
+    {%for user in users%}
+    <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td><a href='#'><button class="btn">Show Books</button></a></td>
+        <td><a href='#'><button class="btn btn-danger">Delete</button></a></td>
+        <td><a href='#'><button class="btn btn-warning">Edit</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+{%endblock%}
